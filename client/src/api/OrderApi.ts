@@ -2,7 +2,7 @@ import { Order } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "react-query";
 
-const BASE_URL=import.meta.env.VITE_BASE_URL;
+const BASE_URL=import.meta.env.VITE_ORDER_BASE_URL;
 
 export const useGetOrder=(orderId:string|undefined)=>{
 const getOrder=async():Promise<Order>=>{
