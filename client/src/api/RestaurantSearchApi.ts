@@ -2,7 +2,7 @@ import { SearchState } from "@/pages/SearchRestaurant";
 import { Restaurant, RestaurantSearchResponse } from "@/types";
 import { useQuery } from "react-query";
 
-const BASE_URL=import.meta.env.VITE_BASE_URL;
+const BASE_URL=import.meta.env.VITE_RES_BASE_URL;
 
 export const useGetRestaurant=(restaurantId?:string
 )=>{

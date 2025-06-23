@@ -5,7 +5,7 @@ import { toast } from "sonner";
 
 
 
-const BASE_URL=import.meta.env.VITE_BASE_URL;
+const BASE_URL=import.meta.env.VITE_RES_BASE_URL;
 
 
 export const useGetRestaurantRequest=()=>{
