@@ -28,6 +28,20 @@ export type User = {
     imageUrl: string;
     lastUpdated: string;
   };
+  export type PendingRestaurant = {
+    _id: string;
+    user: string;
+    restaurantName: string;
+    city: string;
+    country: string;
+    deliveryPrice: number;
+    estimatedDeliveryTime: number;
+    cuisines: string[];
+    menuItems: MenuItem[];
+    imageUrl: string;
+    lastUpdated: string;
+    isApproved:string;
+  };
 
   export type Results={
     data:Restaurant[];

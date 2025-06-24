@@ -1,4 +1,4 @@
-import { Restaurant } from "@/types";
+import { PendingRestaurant, Restaurant } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQuery } from "react-query";
 import { toast } from "sonner";
@@ -35,7 +35,65 @@ return { restaurant,isLoading};
 
 }
 
+export const useGetStatusRestaurant=()=>{
+const {getAccessTokenSilently}=useAuth0();
 
+    const getStatus=async():Promise<PendingRestaurant>=>{
+    const authToken=await getAccessTokenSilently();
+const response=await fetch(`${BASE_URL}/api/v1/restaurant/status`,{
+ method:'GET',
+        headers:{
+            Authorization: `Bearer ${authToken}`,
+        }
+})
+if(!response.ok) throw new Error("Unable to fetch status");
+return response.json();
+    };
+
+    const {data:PendingRestaurant,isLoading}=useQuery("fetchStatus",getStatus)
+    return {PendingRestaurant,isLoading}
+}
+
+export const useGetApproval=()=>{
+  const {getAccessTokenSilently}=useAuth0();
+    const createPendingRestaurantRequest=async (restaurantFormData:FormData):Promise<PendingRestaurant>=>{
+        const authToken=await getAccessTokenSilently();
+
+        const response=await fetch(`${BASE_URL}/api/v1/restaurant/approve`,
+            {
+                method:"POST",
+                headers:{
+                    Authorization: `Bearer ${authToken}`,
+                },
+                body:restaurantFormData
+            }
+        );
+        if(!response.ok){
+            throw new Error('Failed to create restaurant'); 
+        }
+        return response.json();
+    };
+    const {mutateAsync:requestApproval,
+        isLoading,isError,isSuccess
+    }=useMutation(createPendingRestaurantRequest);
+
+    if(isSuccess)
+        {
+            toast.success('restaurant created')
+        }
+
+            if(isError)
+    {
+    toast.error('error occured while upadting restaurant');
+}
+
+
+    return {
+        requestApproval,isLoading,isError,isSuccess
+    }
+    
+ 
+}
 
 export const useCreateRestaurantRequest=()=>
        

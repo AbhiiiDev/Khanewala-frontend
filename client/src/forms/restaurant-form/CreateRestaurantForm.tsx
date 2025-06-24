@@ -56,8 +56,7 @@ const form=useForm<RestaurantFormData>({
     resolver:zodResolver(RestaurantSchema),
     defaultValues:{
       cuisines:[],
-      menuItems:[{ name:"",price:0,imageFile:undefined
-      }]
+      menuItems:[{ name:"",price:0 }]
     }
 })
 
