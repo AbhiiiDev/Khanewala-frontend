@@ -30,7 +30,7 @@ export type User = {
   };
   export type PendingRestaurant = {
     _id: string;
-    user: string;
+    user: User;
     restaurantName: string;
     city: string;
     country: string;
