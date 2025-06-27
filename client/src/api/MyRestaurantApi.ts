@@ -59,7 +59,7 @@ export const useGetApproval=()=>{
     const createPendingRestaurantRequest=async (restaurantFormData:FormData):Promise<PendingRestaurant>=>{
         const authToken=await getAccessTokenSilently();
 
-        const response=await fetch(`${BASE_URL}/api/v1/restaurant/approve`,
+        const response=await fetch(`${BASE_URL}/api/v1/restaurant/approval`,
             {
                 method:"POST",
                 headers:{
@@ -179,4 +179,24 @@ return response.json();
     return{
         updateRestaurant,isLoading
     }
+}
+
+export const useGetPendingRestaurant=()=>{
+    const {getAccessTokenSilently}=useAuth0();
+
+    const getPendingRestaurant=async():Promise<PendingRestaurant>=>{
+        const authToken=await getAccessTokenSilently();
+const response=await fetch(`${BASE_URL}/api/v1/restaurant/pending`,{
+      method:'GET',
+headers:{
+    Authorization:`Bearer ${authToken}`,
+}
+});
+if(!response.ok) throw new Error('failed to fetch restaurant') ;
+return response.json();
+    }
+
+
+    const {data:PendingRestaurant,isLoading}=useQuery('fetchPendingRestaurant',getPendingRestaurant);
+    return {PendingRestaurant,isLoading};
 }
