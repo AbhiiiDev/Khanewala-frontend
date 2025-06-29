@@ -7,7 +7,7 @@ const BASE_URL=import.meta.env.VITE_RES_BASE_URL;
 export const useGetRestaurant=(restaurantId?:string
 )=>{
     const getRestaurant=async():Promise<Restaurant>=>{
-        const response=await fetch(`${BASE_URL}/api/restaurant/${restaurantId}`);
+        const response=await fetch(`${BASE_URL}/restaurant/${restaurantId}`);
         if(!response.ok){
             throw new Error('Failed to get Restaurant');
         }
@@ -31,7 +31,7 @@ export const useSearchRestaurants = (
       params.set("selectedCuisines", searchState.selectedCuisines.join(","));
       params.set("sortOption", searchState.sortOptions);
       const response = await fetch(
-        `${BASE_URL}/api/restaurant/search/${city}?${params.toString()}`
+        `${BASE_URL}/restaurant/search/${city}?${params.toString()}`
       );
   
       if (!response.ok) {

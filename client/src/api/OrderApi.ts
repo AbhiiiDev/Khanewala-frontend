@@ -6,7 +6,7 @@ const BASE_URL=import.meta.env.VITE_ORDER_BASE_URL;
 
 export const useGetOrder=(orderId:string|undefined)=>{
 const getOrder=async():Promise<Order>=>{
-    const response=await fetch(`${BASE_URL}/${orderId}`);
+    const response=await fetch(`${BASE_URL}/order/${orderId}`);
     if(!response.ok) {
                     throw new Error('Failed to get Order');
 
@@ -22,7 +22,7 @@ export const useGetAllOrder=()=>{
 const getOrders=async():Promise<Order[]>=>{
         const authToken=await getAccessTokenSilently();
 
-    const response=await fetch(`${BASE_URL}/`,
+    const response=await fetch(`${BASE_URL}/order`,
         {
          method:'GET',
         headers:{

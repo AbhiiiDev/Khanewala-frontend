@@ -16,7 +16,7 @@ const {getAccessTokenSilently}=useAuth0();
 const getRestaurantRequest=async():Promise<Restaurant>=>{
     const authToken=await getAccessTokenSilently();
 
-    const response=await fetch(`${BASE_URL}/api/v1/restaurant`,{
+    const response=await fetch(`${BASE_URL}/restaurant`,{
         method:'GET',
         headers:{
             Authorization: `Bearer ${authToken}`,
@@ -40,7 +40,7 @@ const {getAccessTokenSilently}=useAuth0();
 
     const getStatus=async():Promise<PendingRestaurant>=>{
     const authToken=await getAccessTokenSilently();
-const response=await fetch(`${BASE_URL}/api/v1/restaurant/status`,{
+const response=await fetch(`${BASE_URL}/restaurant/status`,{
  method:'GET',
         headers:{
             Authorization: `Bearer ${authToken}`,
@@ -59,7 +59,7 @@ export const useGetApproval=()=>{
     const createPendingRestaurantRequest=async (restaurantFormData:FormData):Promise<PendingRestaurant>=>{
         const authToken=await getAccessTokenSilently();
 
-        const response=await fetch(`${BASE_URL}/api/v1/restaurant/approval`,
+        const response=await fetch(`${BASE_URL}/restaurant/approval`,
             {
                 method:"POST",
                 headers:{
@@ -104,7 +104,7 @@ const {getAccessTokenSilently}=useAuth0();
     const createRestaurantRequest=async (restaurantFormData:FormData):Promise<Restaurant>=>{
         const authToken=await getAccessTokenSilently();
 
-        const response=await fetch(`${BASE_URL}/api/v1/restaurant`,
+        const response=await fetch(`${BASE_URL}/restaurant`,
             {
                 method:"POST",
                 headers:{
@@ -149,7 +149,7 @@ export const useUpdateRestaurantRequest=()=>{
 
     const updateRestaurantRequest=async(restaurantFormData:FormData) =>{
         const authToken=await getAccessTokenSilently();
-const response=await fetch(`${BASE_URL}/api/v1/restaurant`,
+const response=await fetch(`${BASE_URL}/restaurant`,
     {
         method:"PUT",
         headers:{
@@ -186,7 +186,7 @@ export const useGetPendingRestaurant=()=>{
 
     const getPendingRestaurant=async():Promise<PendingRestaurant>=>{
         const authToken=await getAccessTokenSilently();
-const response=await fetch(`${BASE_URL}/api/v1/restaurant/pending`,{
+const response=await fetch(`${BASE_URL}/restaurant/pending`,{
       method:'GET',
 headers:{
     Authorization:`Bearer ${authToken}`,
