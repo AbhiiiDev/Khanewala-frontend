@@ -14,7 +14,7 @@ export const useGetUserRequest=()=>{
 const getUser = async (): Promise<User>=>{
 const authToken=await getAccessTokenSilently();
 
-    const response=await fetch(`${BASE_URL}/api/v1/user`,{
+    const response=await fetch(`${BASE_URL}/user`,{
         method:'GET',
         headers:{
             Authorization: `Bearer ${authToken}`,
@@ -66,7 +66,7 @@ type CreateUser={
             
             const authToken=await getAccessTokenSilently();
 
-            const response=await fetch(`${BASE_URL}/api/v1/user`,
+            const response=await fetch(`${BASE_URL}/user`,
                 {
                     method:"POST",
                     headers:{
@@ -114,7 +114,7 @@ const {getAccessTokenSilently}=useAuth0();
     const updateUserRequest=async(formData:UpdatedUser)=>{
         const authToken=await getAccessTokenSilently();
 
-        const response=await fetch(`${BASE_URL}/api/v1/user`,
+        const response=await fetch(`${BASE_URL}/user`,
   { 
              method:'PUT',
              headers:{
