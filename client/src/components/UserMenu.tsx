@@ -29,15 +29,27 @@ console.log(currentUser?.role)
             User Profile
           </Link>
         </DropdownMenuItem>
-    <DropdownMenuItem>
-{  currentUser?.role==='restaurant' ?  (  <Link to="/manageRestaurant" className="font-bold text-orange-500 hover:bg-orange-200">
+  
+{  currentUser?.role==='restaurant' ?  (  <DropdownMenuItem>  <Link to="/manageRestaurant" className="font-bold text-orange-500 hover:bg-orange-200">
            Manange Restaurant
-          </Link>) :
-(<Link to="/partner-with-us" className="font-bold text-orange-500 hover:bg-orange-200">
+          </Link>   </DropdownMenuItem>) :
+          currentUser?.role==='customer' ?
+(  <DropdownMenuItem><Link to="/partner-with-us" className="font-bold text-orange-500 hover:bg-orange-200">
            Partner with Us
-          </Link>)
+          </Link> </DropdownMenuItem>): null
           }
+        
+  
+
+{  
+currentUser?.role==='admin' &&  (     
+      <DropdownMenuItem>
+   <Link to="/dashboard" className="font-bold text-orange-500 hover:bg-orange-200">
+           Dashboard
+          </Link> 
         </DropdownMenuItem>
+)
+}
     <DropdownMenuItem>
           <Link to="/orders" className="font-bold text-orange-500 hover:bg-orange-200">
            Orders

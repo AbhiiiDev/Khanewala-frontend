@@ -69,7 +69,7 @@ export const useGetApproval=()=>{
             }
         );
         if(!response.ok){
-            throw new Error('Failed to create restaurant'); 
+            throw new Error('Failed to create Restaurant Request'); 
         }
         return response.json();
     };
@@ -79,12 +79,12 @@ export const useGetApproval=()=>{
 
     if(isSuccess)
         {
-            toast.success('restaurant created')
+            toast.success('restaurant request sent successfully')
         }
 
             if(isError)
     {
-    toast.error('error occured while upadting restaurant');
+    toast.error('error occured while sending restaurant request');
 }
 
 
