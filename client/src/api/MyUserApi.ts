@@ -47,17 +47,10 @@ return {
 
 }
 
-
-
-
-
-
-
 type CreateUser={
     auth0Id:string,
     email:string
 }
-
 
  export const useCreateUser =()=>
     {
@@ -98,15 +91,12 @@ type CreateUser={
     isSuccess
 };};
 
-
 type UpdatedUser={
     name:string,
     addressLine1:string,
     city:string,
     country:string
 }
-
-    
 
 export const UpdateUserRequeset=()=>{
 const {getAccessTokenSilently}=useAuth0();
@@ -134,11 +124,10 @@ const {mutateAsync:updatedUser,
     isLoading,
     isSuccess,
     error,
-    isError,
     reset,
 }=useMutation(updateUserRequest);
 
-if(isError)
+if(error)
     {
         toast.error(error.toString());
         reset();

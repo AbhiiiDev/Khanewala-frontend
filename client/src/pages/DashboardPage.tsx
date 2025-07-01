@@ -1,16 +1,20 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { useNavigate } from "react-router-dom"
-import { useGetPendingList } from "@/api/PendingRestaurantApi"
-
-
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  useApprovePendingList,
+  useGetPendingList,
+} from "@/api/PendingRestaurantApi";
 
 const DashboardPage = () => {
-  const navigate = useNavigate()
 
-const {pendingRestaurants}=useGetPendingList();
-
+  const { pendingRestaurants } = useGetPendingList();
+  const { mutate: approvePending } = useApprovePendingList();
+  if(pendingRestaurants?.length===0) return (
+    <div className="flex items-center justify-center min-h-[90vh]">
+Sorry, No Restaurants Found
+    </div>
+  )
   return (
     <div className="p-6 mt-28">
       <h1 className="text-2xl font-semibold mb-4">Pending Restaurants</h1>
@@ -26,18 +30,28 @@ const {pendingRestaurants}=useGetPendingList();
                 </div>
                 <Badge variant="outline">Pending</Badge>
               </div>
-              <Button
-                onClick={() => navigate(`/admin/restaurants/${rest._id}`)}
-                className="mt-2"
-              >
-                View Details
-              </Button>
+              <div className="flex justify-between">
+                <Button
+                  size="sm"
+                  onClick={() => approvePending(rest._id)}
+                  className="mt-2 font-semibold bg-red-600 text-white hover:bg-red-500"
+                >
+                  Reject
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => approvePending(rest._id)}
+                  className="mt-2 font-semibold bg-green-600 hover:bg-green-500 text-white"
+                >
+                  Approve
+                </Button>
+              </div>
             </CardContent>
-          </Card>
+          </Card> 
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardPage
+export default DashboardPage;
