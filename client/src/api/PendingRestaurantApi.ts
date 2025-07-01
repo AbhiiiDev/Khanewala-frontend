@@ -1,6 +1,6 @@
 import { PendingRestaurant } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 
 const BASE_URL=import.meta.env.VITE_RES_BASE_URL;
 
@@ -17,9 +17,9 @@ const BASE_URL=import.meta.env.VITE_RES_BASE_URL;
 
 //     }
 // }
-export const useApprovePendingList=(pendId)=>{
+export const useApprovePendingList=()=>{
     const {getAccessTokenSilently}=useAuth0();
-    const getPendingList=async ():Promise<PendingRestaurant[]>=>{
+    const approvePending=async (pendId:string):Promise<PendingRestaurant[]>=>{
         const authToken=await getAccessTokenSilently();
 const response=await fetch(`${BASE_URL}/restaurant/approve/${pendId}`,{
     method:'PUT',
@@ -33,9 +33,8 @@ if(!response.ok)
 }
 return response.json();
     }
-    const {data:pendingRestaurants,isLoading}=useQuery('getPendingList',getPendingList);
+   return useMutation(approvePending);
 
-    return {pendingRestaurants,isLoading};
 }
 export const useGetPendingList=()=>{
     const {getAccessTokenSilently}=useAuth0();
