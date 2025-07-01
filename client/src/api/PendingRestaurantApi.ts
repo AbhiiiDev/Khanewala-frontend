@@ -17,6 +17,26 @@ const BASE_URL=import.meta.env.VITE_RES_BASE_URL;
 
 //     }
 // }
+export const useApprovePendingList=(pendId)=>{
+    const {getAccessTokenSilently}=useAuth0();
+    const getPendingList=async ():Promise<PendingRestaurant[]>=>{
+        const authToken=await getAccessTokenSilently();
+const response=await fetch(`${BASE_URL}/restaurant/approve/${pendId}`,{
+    method:'PUT',
+    headers:{
+        Authorization:`Bearer ${authToken}`
+    }
+});
+if(!response.ok)
+{
+      throw new Error('failed to get restaurant'); 
+}
+return response.json();
+    }
+    const {data:pendingRestaurants,isLoading}=useQuery('getPendingList',getPendingList);
+
+    return {pendingRestaurants,isLoading};
+}
 export const useGetPendingList=()=>{
     const {getAccessTokenSilently}=useAuth0();
     const getPendingList=async ():Promise<PendingRestaurant[]>=>{
