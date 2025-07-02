@@ -50,7 +50,7 @@ export default function SearchBar({onSubmit,onReset,placeHolder,searchQuery}:Pro
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}
-      className={`flex items-center gap-3 justify-between flex-row border-2 rounded-full p-3 ${
+      className={`flex items-center gap-3 justify-between flex-row border-2 rounded-full p-1 sm:p-3 ${
           form.formState.errors.searchQuery && "border-red-500"
         }`}
         >

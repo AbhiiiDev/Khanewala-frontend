@@ -12,10 +12,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col gap-12 pb-16 relative bg-gray-200">
+    <div className="flex flex-col gap-12 pb-16 relative">
       <div className="md:px-32 bg-white rounded-lg shadow-md py-8 flex flex-col gap-5 text-center z-1 -mt-16 ">
         <h1 className="font-bold text-black text-5xl">
-          Don't think, Just Order kuch KhaneWala !
+          Don't think, Just Order !
         </h1>
         <span className="text-xl">Food is just a Click away !</span>
 
