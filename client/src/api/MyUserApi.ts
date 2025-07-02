@@ -34,7 +34,12 @@ const {
     data: currentUser,
     isLoading,
     error,
-  } = useQuery("fetchCurrentUser", getUser);
+  } = useQuery("fetchCurrentUser", getUser,{
+      staleTime: 1000 * 60 * 10,        // ✅ 5 minutes (data considered "fresh")
+      cacheTime: 1000 * 60 * 10,       // ✅ 10 minutes in background
+      refetchOnWindowFocus: false,    // ✅ Don’t refetch when tab regains focus
+      refetchOnMount: false           // ✅ Don’t refetch on remount
+    });
 
 if(error)
     {
