@@ -24,7 +24,7 @@ const MenuCard = ({item,restaurant}:Props) => {
             return found?.quantity || 0;
         })
   return (
-    <Card className="w-[30%] h-32">
+    <Card className="w-full sm:w-[30%] h-32 shadow-lg">
     <div className="flex-col p-4 text-base font-semibold w-52">
     <p className="text-gray-600">{item.name}</p>
     <p className="flex items-center"> <IndianRupee color="green" size={17}/> {item.price}</p>
