@@ -9,7 +9,7 @@ import {
 const DashboardPage = () => {
 
   const { pendingRestaurants } = useGetPendingList();
-  const { mutate: approvePending } = useApprovePendingList();
+  const { approvePending} = useApprovePendingList();
   if(pendingRestaurants?.length===0) return (
     <div className="flex items-center justify-center min-h-[90vh]">
 Sorry, No Restaurants Found
