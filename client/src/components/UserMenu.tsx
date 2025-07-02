@@ -16,7 +16,6 @@ export default function UserMenu() {
 
     const { user, logout } = useAuth0();
     const{currentUser} =useGetUserRequest();
-console.log(currentUser?.role)
   return (
   <DropdownMenu>
     <DropdownMenuTrigger className="flex gap-1 hover:text-orange-700">
