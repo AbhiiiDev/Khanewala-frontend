@@ -5,16 +5,18 @@ import {
   useApprovePendingList,
   useGetPendingList,
 } from "@/api/PendingRestaurantApi";
+import LoadingState from "@/components/Loader";
 
 const DashboardPage = () => {
 
-  const { pendingRestaurants } = useGetPendingList();
+  const { pendingRestaurants,isLoading } = useGetPendingList();
   const { approvePending} = useApprovePendingList();
   if(pendingRestaurants?.length===0) return (
     <div className="flex items-center justify-center min-h-[90vh]">
 Sorry, No Restaurants Found
     </div>
   )
+  if(isLoading) return <LoadingState/>
   return (
     <div className="p-6 mt-28">
       <h1 className="text-2xl font-semibold mb-4">Pending Restaurants</h1>
