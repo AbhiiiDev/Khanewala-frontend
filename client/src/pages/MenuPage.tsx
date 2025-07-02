@@ -35,7 +35,7 @@ return(
 
     <div className="mt-4">
       <p className="text-center text-xl font-semibold italic text-orange-400">  Menu</p>
-      <div className="mt-4 w-full p-2 sm:flex flex-col items-center gap-2 sm:justify-center">
+      <div className="mt-4 w-full p-2 flex flex-col items-center gap-4 sm:justify-center">
        {
 restaurant?.menuItems.map((item)=>{
     return (
