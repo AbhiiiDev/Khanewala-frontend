@@ -1,4 +1,4 @@
-import { Order } from "@/types";
+import { Order, Restaurant } from "@/types";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from "react-query";
 
@@ -38,4 +38,16 @@ const getOrders=async():Promise<Order[]>=>{
 }
 const {data:orders,isLoading}=useQuery("fetchOrder",getOrders);
 return {orders,isLoading};
+}
+export const useGetRestaurantOrder=(restId:string|undefined)=>{
+
+    const getOrder=async():Promise<Order>=>{
+        const response=await fetch(`${BASE_URL}/order/${restId}`);
+        if(!response.ok){
+                            throw new Error('Failed to get Order');
+        }
+        return response.json();
+    }
+    const {data:restuarants,isLoading}=useQuery('fetchRestOrder',getOrder);
+    return {restuarants,isLoading};
 }
