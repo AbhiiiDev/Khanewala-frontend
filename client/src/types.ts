@@ -7,6 +7,10 @@ export type User = {
     country: string;
     role:string;
   };
+export type UserResponse={
+  currentUser:User;
+  restaurantId:string;
+}
   
   export type MenuItem = {
     _id: string;

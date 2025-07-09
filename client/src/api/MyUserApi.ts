@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation, useQuery } from "react-query";
 
 import {toast} from 'sonner';
-import {User} from '../types';
+import { UserResponse} from '../types';
 
 const BASE_URL=import.meta.env.VITE_BASE_URL;
 
@@ -11,7 +11,7 @@ export const useGetUserRequest=()=>{
 
     const {getAccessTokenSilently}=useAuth0();
 
-const getUser = async (): Promise<User>=>{
+const getUser = async (): Promise<UserResponse>=>{
 const authToken=await getAccessTokenSilently();
 
     const response=await fetch(`${BASE_URL}/user`,{
@@ -26,12 +26,12 @@ const authToken=await getAccessTokenSilently();
         {
             throw new Error('Failed to fetch user');
         }
-
+// console.log(response.json());
         return response.json();
 }
 
 const {
-    data: currentUser,
+    data,
     isLoading,
     error,
   } = useQuery("fetchCurrentUser", getUser,{
@@ -47,7 +47,9 @@ if(error)
     }
 
 return {
-    currentUser,isLoading
+    currentUser:data?.currentUser,
+    restaurantId:data?.restaurantId,
+    isLoading
 }
 
 }

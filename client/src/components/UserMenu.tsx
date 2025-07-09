@@ -15,7 +15,7 @@ import { useGetUserRequest } from "@/api/MyUserApi";
 export default function UserMenu() {
 
     const { user, logout } = useAuth0();
-    const{currentUser} =useGetUserRequest();
+    const{currentUser,restaurantId} =useGetUserRequest();
   return (
   <DropdownMenu>
     <DropdownMenuTrigger className="flex gap-1 hover:text-orange-700">
@@ -49,12 +49,19 @@ currentUser?.role==='admin' &&  (
         </DropdownMenuItem>
 )
 }
+{currentUser?.role==='restaurant'&&(
     <DropdownMenuItem>
+          <Link to={`/orders/${restaurantId}`} className="font-bold text-orange-500 hover:bg-orange-200">
+           Orders
+          </Link>
+        </DropdownMenuItem>
+)}
+   {currentUser?.role==='customer'&& <DropdownMenuItem>
           <Link to="/orders" className="font-bold text-orange-500 hover:bg-orange-200">
            Orders
           </Link>
         </DropdownMenuItem>
-
+}
         <DropdownMenuItem>
           <Button
             onClick={() => logout()}
