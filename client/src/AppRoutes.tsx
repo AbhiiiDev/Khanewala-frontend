@@ -13,6 +13,7 @@ import OrderSummaryPage from './pages/OrderSummaryPage';
 import MyOrders from './pages/MyOrders';
 import PartnerWithUs from './pages/PartnerWithUs';
 import DashboardPage from './pages/DashboardPage';
+import RestaurantOrderPage from './pages/RestaurantOrderPage';
 
 const AppRoutes = () => {
 
@@ -33,6 +34,7 @@ const AppRoutes = () => {
 <Route path='/manageRestaurant' element={<Layout isHero={false}><RestaurantPage/></Layout>}/>
 <Route path='/success/:orderId' element={<Layout isHero={false}><OrderSummaryPage/></Layout>}/>
 <Route path='/orders' element={<Layout isHero={false}><MyOrders/></Layout>}/>
+<Route path='/orders/:restId' element={<Layout isHero={false}><RestaurantOrderPage/></Layout>}/>
 <Route path='/dashboard' element={<Layout isHero={false}><DashboardPage/></Layout>}/>
 </Route>
 <Route path='*' element={<Layout isHero={true}><HomePage /></Layout>}/>
