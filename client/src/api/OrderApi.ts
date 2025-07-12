@@ -41,13 +41,13 @@ return {orders,isLoading};
 }
 export const useGetRestaurantOrder=(restId:string|undefined)=>{
 
-    const getOrder=async():Promise<Order>=>{
+    const getOrder=async():Promise<Order[]>=>{
         const response=await fetch(`${BASE_URL}/order/restaurant/${restId}`);
         if(!response.ok){
                             throw new Error('Failed to get Order');
         }
         return response.json();
     }
-    const {data:restuarants,isLoading}=useQuery('fetchRestOrder',getOrder);
-    return {restuarants,isLoading};
+    const {data:orders,isLoading}=useQuery('fetchRestOrder',getOrder);
+    return {orders,isLoading};
 }
