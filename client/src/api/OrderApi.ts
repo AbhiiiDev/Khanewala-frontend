@@ -42,7 +42,7 @@ return {orders,isLoading};
 export const useGetRestaurantOrder=(restId:string|undefined)=>{
 
     const getOrder=async():Promise<Order>=>{
-        const response=await fetch(`${BASE_URL}/order/${restId}`);
+        const response=await fetch(`${BASE_URL}/order/restaurant/${restId}`);
         if(!response.ok){
                             throw new Error('Failed to get Order');
         }

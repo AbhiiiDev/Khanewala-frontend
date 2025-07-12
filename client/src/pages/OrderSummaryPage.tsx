@@ -25,7 +25,7 @@ dispatch(clearCart());
           <p className="text-sm text-muted-foreground">{"3h"}</p>
         </div>
         <Badge variant="outline" className={order?.paymentStatus==='paid'?"ml-auto bg-green-500":"bg-red-500"}>
-          {order?.paymentStatus}
+          {order?.status}
         </Badge>
       </div>
 

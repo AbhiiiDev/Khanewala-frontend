@@ -9,12 +9,13 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY!);
 export const CheckoutButton = () => {
   const items = useAppSelector((state) => state.cart.items);
   const restaurantId = useAppSelector((state) => state.cart.restaurant?._id);
-console.log('items',items);
-console.log('resID',restaurantId);
+
   const {getAccessTokenSilently}=useAuth0();
   const handleCheckout = async () => {
     const authToken=await getAccessTokenSilently();
-    const res = await fetch(`${import.meta.env.VITE_ORDER_BASE_URL}/api/payment/create-checkout-session`, {
+console.log('items',items);
+console.log('resID',restaurantId);
+    const res = await fetch(`${import.meta.env.VITE_ORDER_BASE_URL}/payment/create-checkout-session`, {
       method: "POST",
       headers: { "Content-Type": "application/json",
 Authorization:  `Bearer ${authToken}`
