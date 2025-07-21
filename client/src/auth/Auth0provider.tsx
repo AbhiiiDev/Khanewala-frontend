@@ -17,11 +17,6 @@ if (!domain || !clientId  ) {
     
     const onRedirect = (appState?: AppState, user?: User) => {
 console.log('🔁 onRedirectCallback called');
-  console.log('🔒 Current URL:', window.location.href);
-  console.log('📦 AppState:', appState);
-  console.log('👤 User:', user);
-  // Avoid manual navigation unless required
-  // navigate(appState?.returnTo || '/'); // Exa
     }
   return (
   <Auth0Provider

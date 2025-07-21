@@ -13,8 +13,7 @@ export const CheckoutButton = () => {
   const {getAccessTokenSilently}=useAuth0();
   const handleCheckout = async () => {
     const authToken=await getAccessTokenSilently();
-console.log('items',items);
-console.log('resID',restaurantId);
+
     const res = await fetch(`${import.meta.env.VITE_ORDER_BASE_URL}/payment/create-checkout-session`, {
       method: "POST",
       headers: { "Content-Type": "application/json",
@@ -25,7 +24,6 @@ Authorization:  `Bearer ${authToken}`
     });
 
     const data = await res.json();
-    console.log(data)
     const stripe = await stripePromise;
     await stripe?.redirectToCheckout({ sessionId: data.id });
   };

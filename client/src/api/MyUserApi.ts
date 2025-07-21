@@ -26,7 +26,6 @@ const authToken=await getAccessTokenSilently();
         {
             throw new Error('Failed to fetch user');
         }
-// console.log(response.json());
         return response.json();
 }
 

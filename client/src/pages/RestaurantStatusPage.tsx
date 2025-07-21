@@ -6,7 +6,6 @@ const RestaurantStatus: React.FC = () => {
   const {PendingRestaurant,isLoading}=useGetPendingRestaurant();
 if(isLoading)
   return <LoadingState/>
-console.log(PendingRestaurant)
   return (
     <div className="min-h-screen mt-8 bg-gray-100 p-6">
       <div className="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">

@@ -11,7 +11,6 @@ export const MenuPage=()=>
    
     const {restaurantId}=useParams();
     const {restaurant,isLoading}= useGetRestaurant(restaurantId);
-    console.log(restaurant);
   
     if(isLoading)
         return <LoadingState/>

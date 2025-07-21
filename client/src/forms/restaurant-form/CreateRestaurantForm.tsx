@@ -65,7 +65,6 @@ form.reset(restaurant);
 },[restaurant])
 
 const onSubmit=(formDataJson:RestaurantFormData)=>{
-  console.log('button clicked')
   const formData=new FormData();
 
   formData.append('restaurantName',formDataJson.restaurantName);
@@ -77,7 +76,6 @@ formData.append('estimatedDeliveryTime',formDataJson.estimatedDeliveryTime.toStr
 formData.append('deliveryPrice',formDataJson.deliveryPrice.toString());
 
 
-console.log(formDataJson.cuisines);
 
   formDataJson.cuisines.forEach((cuisine,index)=>{
     formData.append(`cuisines[${index}]`,cuisine);

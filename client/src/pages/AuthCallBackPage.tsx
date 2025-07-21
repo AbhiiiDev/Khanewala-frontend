@@ -8,10 +8,8 @@ export default function AuthCallBackPage() {
 const {createUser}=useCreateUser();
 const navigate=useNavigate();
 const {user,isLoading}=useAuth0();
-console.log('authcallback page hitted')
 useEffect(() => {
-  console.log("✅ AuthCallbackPage mounted");
-  console.log("👤 User from useAuth0:", user);
+
 if (isLoading) {
       console.log('⏳ Waiting for authentication to complete...');
       return;
